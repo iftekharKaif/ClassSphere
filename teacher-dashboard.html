@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - ClassSphere</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cs-shell" data-page="teacher-dashboard">
+  <header class="cs-appbar" role="banner">
+    <div class="cs-appbar-inner">
+      <div class="cs-brand" aria-label="ClassSphere">
+        <img src="assets/logo.png" alt="ClassSphere logo" class="cs-logo-small">
+        <span class="cs-brand-text">ClassSphere</span>
+      </div>
+
+      <div class="cs-appbar-actions">
+        <button class="cs-icon-btn" type="button" id="createClassBtn" title="Create classroom">
+          <span class="cs-icon" aria-hidden="true">+</span>
+          <span class="cs-icon-btn-label">Create class</span>
+        </button>
+        <a class="cs-avatar" href="index.html" title="Back to home" aria-label="Back to home">T</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-page" role="main">
+    <div class="cs-page-header">
+      <h1 class="cs-page-title">Your classrooms</h1>
+      <p class="cs-page-subtitle">Create and manage all of your courses in one place.</p>
+    </div>
+
+    <section aria-label="Teacher classrooms">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 6px 0 14px;">
+        <div style="color:#6b7280; font-size: 13px;" id="teacherDashboardStats">Loading…</div>
+      </div>
+
+      <div class="cs-class-grid" id="teacherClassGrid"></div>
+      <div id="teacherEmptyState" class="cs-empty-state" hidden>
+        <div class="cs-empty-card">
+          <h3 class="cs-empty-title">No classrooms yet</h3>
+          <p class="cs-empty-text">Create your first class to start sharing announcements, materials, and results.</p>
+          <button class="cs-primary-btn" type="button" id="teacherEmptyCreateBtn">Create a class</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

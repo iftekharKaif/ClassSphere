@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classroom - Student View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="classroom-page-body" data-page="classroom-student">
+  <div class="student-classroom-wrapper">
+    <aside class="student-sidebar">
+      <a href="student-dashboard.html" class="btn back-to-dashboard-btn">← Back to dashboard</a>
+    </aside>
+    <main class="student-main-content">
+      <div class="container classroom-container classroom-page">
+        <div class="classroom-layout">
+
+  <!-- LEFT SIDE -->
+  <div class="classroom-left">
+    <div class="course-info-card">
+      <div class="course-info-inner">
+        <img src="assets/logo.png" alt="ClassSphere logo" class="course-info-logo">
+        <div class="course-info-text">
+          <h1 id="classroomTitle" class="course-info-title">Classroom</h1>
+          <p id="studentClassMeta" class="course-info-meta"></p>
+          <p id="studentTeacherName" class="course-info-teacher"></p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Folders</h2>
+    <div class="folder-container student-folder-container" id="studentFolderList"></div>
+    <p id="studentFolderEmpty"></p>
+
+    <h2>Results</h2>
+    <div class="announcement-board" id="studentResults"></div>
+  </div>
+
+  <!-- RIGHT SIDE: Announcements (WhatsApp-style, scroll inside) -->
+  <div class="classroom-right">
+    <h2>Announcements</h2>
+    <div class="announcement-board announcement-board-whatsapp announcement-board-readonly">
+      <div class="announcement-board-inner scroll-box" id="studentAnnouncements"></div>
+    </div>
+  </div>
+
+  </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

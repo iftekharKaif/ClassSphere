@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Classroom - ClassSphere</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Modal ===== */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+    .modal-content {
+      background: #fff; padding: 20px; width: 350px; margin: 15% auto; border-radius: 8px;
+    }
+    .modal-content h3 { margin-bottom: 15px; }
+    .modal-content input[type="file"], .modal-content input[type="text"] { width: 100%; padding: 6px; margin-bottom: 10px; }
+    .modal-content button { margin-right: 10px; padding: 6px 12px; border: none; border-radius: 6px; cursor: pointer; }
+    .save-btn { background-color: #10b981; color: #fff; }
+    .cancel-btn { background-color: #ef4444; color: #fff; }
+
+    /* ===== Folder Contents Popup ===== */
+    #viewModal ul { list-style: none; padding-left: 0; }
+    #viewModal ul li { padding: 6px 0; border-bottom: 1px solid #e5e7eb; }
+  </style>
+</head>
+<body data-page="classroom-teacher">
+  <div class="dashboard-wrapper">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <a href="teacher-dashboard.html" class="btn back-to-dashboard-btn">← Back to dashboard</a>
+
+      <h2 style="margin-top: 18px;">Join requests</h2>
+      <ul class="student-list" id="joinRequestsList" style="margin-bottom: 14px;"></ul>
+
+      <h2>Students</h2>
+      <div id="teacherStudentsCount" style="margin: -6px 0 10px; color: #6b7280; font-size: 13px;">Joined: 0</div>
+      <ul class="student-list" id="teacherStudentsList"></ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="teacher-classroom-layout">
+        <!-- LEFT: Course header card, Folders, Results -->
+        <div class="teacher-classroom-left">
+          <div class="course-info-card">
+            <div class="course-info-inner">
+              <img src="assets/logo.png" alt="ClassSphere logo" class="course-info-logo">
+              <div class="course-info-text">
+                <h1 id="teacherClassTitle" class="course-info-title">Classroom</h1>
+                <p id="teacherClassMeta" class="course-info-meta"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header-row">
+            <h2>Folders & Materials</h2>
+            <button class="btn create-folder-btn" type="button" id="createFolderBtn">+ Folder</button>
+          </div>
+          <div class="folder-container" id="teacherFolderContainer"></div>
+          <p id="teacherFolderEmpty" style="margin-top:8px; color:#6b7280; font-size:14px;"></p>
+
+          <div class="section-header-row">
+            <h2>Results</h2>
+            <button class="btn upload-btn" type="button" id="uploadResultBtn">Upload Result</button>
+          </div>
+          <div class="folder-container results-folder-container" id="teacherResultsContainer"></div>
+        </div>
+
+        <!-- RIGHT: Announcements (WhatsApp-style, only teachers post, scroll inside) -->
+        <div class="teacher-classroom-right">
+          <h2>Announcements</h2>
+          <div class="announcement-board announcement-board-whatsapp">
+            <div class="announcement-board-compose">
+              <input id="teacherAnnouncementInput" type="text" placeholder="Write an announcement..." class="announcement-input">
+              <button class="btn create-btn" type="button" id="postAnnouncementBtn">Post</button>
+            </div>
+            <div class="announcement-board-inner scroll-box" id="teacherAnnouncements"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Upload Modal -->
+  <div id="uploadModal" class="modal">
+    <div class="modal-content">
+      <h3 id="uploadModalTitle">Add Material</h3>
+      <input type="file" id="fileInput"><br>
+      <input type="text" id="linkInput" placeholder="Paste link (optional)"><br>
+      <input type="text" id="titleInput" placeholder="Title (optional)"><br>
+      <button class="save-btn" type="button" id="uploadSaveBtn">Save</button>
+      <button class="cancel-btn" type="button" id="uploadCancelBtn">Cancel</button>
+      <p id="uploadError" style="margin-top:10px; color:#b91c1c; font-size:13px;"></p>
+    </div>
+  </div>
+
+  <!-- View Folder Modal -->
+  <div id="viewModal" class="modal">
+    <div class="modal-content">
+      <h3 id="viewModalTitle">Folder Contents</h3>
+      <ul id="folderItems"></ul>
+      <button class="cancel-btn" type="button" id="viewCloseBtn">Close</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

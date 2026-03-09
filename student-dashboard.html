@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - ClassSphere</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cs-shell" data-page="student-dashboard">
+  <header class="cs-appbar" role="banner">
+    <div class="cs-appbar-inner">
+      <div class="cs-brand" aria-label="ClassSphere">
+        <img src="assets/logo.png" alt="ClassSphere logo" class="cs-logo-small">
+        <span class="cs-brand-text">ClassSphere</span>
+      </div>
+
+      <div class="cs-appbar-actions">
+        <button class="cs-icon-btn" type="button" id="joinClassBtn" aria-haspopup="dialog" aria-controls="joinClassModal" title="Join class">
+          <span class="cs-icon" aria-hidden="true">+</span>
+          <span class="cs-icon-btn-label">Join class</span>
+        </button>
+        <a class="cs-avatar" href="index.html" title="Back to home" aria-label="Back to home">S</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="cs-page" role="main">
+    <div class="cs-page-header">
+      <h1 class="cs-page-title">Classes</h1>
+      <p class="cs-page-subtitle">Join a class using a class code, or open a class you’ve already joined.</p>
+    </div>
+
+    <section aria-label="Joined classes">
+      <div id="classesGrid" class="cs-class-grid"></div>
+
+      <div id="emptyState" class="cs-empty-state" hidden>
+        <div class="cs-empty-card">
+          <h2 class="cs-empty-title">No classes yet</h2>
+          <p class="cs-empty-text">Join your first class with a code from your teacher.</p>
+          <button class="cs-primary-btn" type="button" id="joinClassBtnEmpty">Join class</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Join class modal -->
+  <div id="joinClassModal" class="modal cs-modal" role="dialog" aria-modal="true" aria-labelledby="joinClassTitle">
+    <div class="cs-modal-content" role="document">
+      <div class="cs-modal-header">
+        <h2 id="joinClassTitle" class="cs-modal-title">Join class</h2>
+        <button class="cs-close-btn" type="button" id="joinClassCloseBtn" aria-label="Close">×</button>
+      </div>
+
+      <form id="joinClassForm" class="cs-form">
+        <label for="classCodeInput">Class code</label>
+        <input id="classCodeInput" name="classCode" type="text" inputmode="latin" autocomplete="off" placeholder="Example: abc123" required>
+        <p class="cs-help">Ask your teacher for the class code, then enter it here.</p>
+
+        <label for="rollIdInput">Roll ID</label>
+        <input id="rollIdInput" name="rollId" type="text" autocomplete="off" placeholder="Example: 101" required>
+        <p class="cs-help">This is your roll number for this class.</p>
+
+        <div class="cs-form-actions">
+          <button class="cs-secondary-btn" type="button" id="joinClassCancelBtn">Cancel</button>
+          <button class="cs-primary-btn" type="submit">Join</button>
+        </div>
+
+        <p id="joinClassError" class="cs-error" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

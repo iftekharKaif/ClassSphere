@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - My Classroom</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-shell" data-page="register">
+  <div class="auth-layout">
+    <div class="auth-hero">
+      <div class="auth-hero-inner">
+        <img src="assets/logo.png" alt="ClassSphere logo" class="auth-logo">
+        <p class="auth-badge">Get started</p>
+        <h2 class="auth-hero-title">Create your ClassSphere account</h2>
+        <p class="auth-hero-text">
+          Set up your teacher or student profile so you can join classrooms, access materials, and track results.
+        </p>
+      </div>
+    </div>
+
+    <div class="container form-container auth-card">
+      <h1 id="authTitle">Create Account</h1>
+      <p id="portalLabel" class="auth-portal-label"></p>
+      <form data-auth="register-form" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Create a password" required>
+
+        <label for="profile">Profile Picture</label>
+        <input type="file" id="profile" accept="image/*">
+
+        <button type="submit" class="btn register-btn">Register</button>
+      </form>
+      <p id="authError" class="form-error" aria-live="polite"></p>
+      <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
