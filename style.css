@@ -78,14 +78,11 @@ body.landing-shell {
 }
 
 .landing-wrapper { width: 100%; max-width: 1100px; padding: 32px 20px; }
-.landing-header { display: flex; justify-content: center; margin-bottom: 16px; }
-.landing-brand { display: inline-flex; align-items: center; gap: 12px; }
 .cs-logo {
   width: 180px; height: 180px; object-fit: contain; border-radius: 24px;
   box-shadow: 0 0 24px rgba(129, 140, 248, 0.4);
   animation: logoPulse 2.8s ease-in-out infinite;
 }
-.cs-brand-text { font-size: 36px; font-weight: 700; color: #e2e8f0; letter-spacing: -0.02em; }
 
 .landing-main {
   display: grid;
@@ -190,22 +187,26 @@ body.auth-shell {
 }
 .auth-hero {
   border-radius: 20px;
-  background: linear-gradient(145deg, #4338ca, #059669);
+  background: linear-gradient(145deg, #4338ca, #0b72519a);
   padding: 28px 30px; box-shadow: var(--cs-shadow-lg);
   display: flex; align-items: center;
 }
-.auth-hero-inner { max-width: 360px; }
+.auth-hero-inner { max-width: 360px; display: grid; grid-column: auto;}
 .auth-logo {
-  width: 64px; height: 64px; border-radius: 18px;
+  width: 110px; height: 110px; border-radius: 18px;
   object-fit: cover;
   box-shadow: 0 0 18px rgba(15, 23, 42, 0.4);
   margin-bottom: 16px;
 }
 .auth-badge {
-  display: inline-flex; align-items: center; padding: 6px 12px;
+  display: inline-flex; 
+  align-items: center; padding: 6px 12px;
   border-radius: 999px; background: rgba(15, 23, 42, 0.2);
   font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
   margin-bottom: 12px;
+  justify-self: start;          
+  width: max-content;    
+  margin-bottom: 40px;      
 }
 .auth-hero-title { font-size: 24px; margin-bottom: 10px; color: #f8fafc; }
 .auth-hero-text { font-size: 14px; color: #e2e8f0; line-height: 1.5; }
@@ -231,10 +232,53 @@ p { font-size: 16px; color: var(--cs-text-muted); margin-bottom: 30px; }
 .form-container { max-width: 400px; padding: 40px 30px; }
 
 form { display: flex; flex-direction: column; }
-label { margin: 12px 0 4px 0; font-weight: 600; color: #334155; }
+label {text-align: left; margin: 12px 0 7px 0; font-weight: 500; color: #334155;}
 input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
   padding: 10px 12px; border-radius: var(--cs-radius-sm); border: 1px solid var(--cs-border);
   font-size: 14px; transition: border-color var(--cs-transition), box-shadow var(--cs-transition);
+}
+
+/* custom styled file upload control */
+.file-upload {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+.file-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.file-upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--cs-border);
+  border-radius: var(--cs-radius-sm);
+  background: var(--cs-surface-card);
+  color: var(--cs-text);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--cs-transition), box-shadow var(--cs-transition);
+}
+/* after the existing .file-upload-label rules */
+.file-upload.has-file .file-upload-label {
+  background: var(--cs-success-light);
+  border-color: var(--cs-success);
+  color: var(--cs-success);
+}
+.file-upload-label:hover {
+  background: var(--cs-surface);
+  box-shadow: var(--cs-shadow-sm);
+}
+.file-upload-icon {
+  font-size: 18px;
 }
 input:focus { outline: none; border-color: var(--cs-primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15); }
 .login-btn { background: var(--cs-primary); margin-top: 20px; }

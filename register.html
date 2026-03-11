@@ -32,8 +32,15 @@
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Create a password" required>
 
-        <label for="profile">Profile Picture</label>
-        <input type="file" id="profile" accept="image/*">
+        <div class="form-row">
+  <div class="file-upload">
+  <label class="file-upload-label" for="profile">
+    <span class="file-upload-icon">📷</span>
+    Profile picture (optional)
+  </label>
+  <input type="file" id="profile" accept="image/*">
+</div>
+</div>
 
         <button type="submit" class="btn register-btn">Register</button>
       </form>
@@ -42,5 +49,16 @@
     </div>
   </div>
   <script src="script.js"></script>
+  <script>
+document.querySelectorAll('.file-upload input[type=file]')
+  .forEach(input => {
+    input.addEventListener('change', () => {
+      const wrapper = input.closest('.file-upload');
+      if (wrapper) {
+        wrapper.classList.toggle('has-file', input.files.length > 0);
+      }
+    });
+  });
+</script>
 </body>
 </html>
