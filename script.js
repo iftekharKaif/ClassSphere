@@ -1673,7 +1673,7 @@ const ClassSphereTeacherClassroom = (() => {
       const uploadBtn = document.createElement('button');
       uploadBtn.className = 'icon-btn upload-btn';
       uploadBtn.type = 'button';
-      uploadBtn.textContent = '+';
+      uploadBtn.innerHTML = '<img src="assets/add.png" alt="Upload" style="width:18px;height:18px;">';
       uploadBtn.title = 'Add material';
       uploadBtn.addEventListener('click', () => {
         openUploadModal({ type: 'material', folderId: folder.id, folderName: folder.name });
@@ -1682,7 +1682,7 @@ const ClassSphereTeacherClassroom = (() => {
       const viewBtn = document.createElement('button');
       viewBtn.className = 'icon-btn view-btn';
       viewBtn.type = 'button';
-      viewBtn.textContent = '👁️';
+      viewBtn.innerHTML = '<img src="assets/view.png" alt="View" style="width:18px;height:18px;">';
       viewBtn.title = 'View materials';
       viewBtn.addEventListener('click', async () => {
         try {
@@ -1702,7 +1702,7 @@ const ClassSphereTeacherClassroom = (() => {
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'icon-btn delete-btn';
       deleteBtn.type = 'button';
-      deleteBtn.textContent = '🗑️';
+      deleteBtn.innerHTML = '<img src="assets/delete.png" alt="Delete" style="width:18px;height:18px;">';
       deleteBtn.title = 'Delete folder';
       deleteBtn.addEventListener('click', async () => {
         const ok = await showDeleteConfirm({ message: 'Are you sure you want to delete this folder and all of its materials?' });
@@ -1791,7 +1791,7 @@ const ClassSphereTeacherClassroom = (() => {
       const deleteBtn = document.createElement('button');
       deleteBtn.type = 'button';
       deleteBtn.className = 'icon-btn delete-btn announcement-delete-btn';
-      deleteBtn.textContent = '🗑️';
+      deleteBtn.innerHTML = '<img src="assets/delete.png" alt="Delete" style="width:18px;height:18px;">';
       deleteBtn.title = 'Delete announcement';
       deleteBtn.addEventListener('click', async () => {
         const ok = await showDeleteConfirm({ message: 'Are you sure you want to delete this announcement?' });
@@ -1853,7 +1853,7 @@ const ClassSphereTeacherClassroom = (() => {
       const deleteBtn = document.createElement('button');
       deleteBtn.type = 'button';
       deleteBtn.className = 'icon-btn delete-btn';
-      deleteBtn.textContent = '🗑️';
+      deleteBtn.innerHTML = '<img src="assets/delete.png" alt="Delete" style="width:18px;height:18px;">';
       deleteBtn.title = 'Delete result';
       deleteBtn.addEventListener('click', async () => {
         const ok = await showDeleteConfirm({ message: 'Are you sure you want to delete this result?' });

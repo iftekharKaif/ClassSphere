@@ -343,11 +343,12 @@ body.cs-shell {
 }
 .cs-appbar {
   flex-shrink: 0; position: sticky; top: 0; z-index: 50;
+  width: 100%;
   background: var(--cs-surface-card); border-bottom: 1px solid var(--cs-border);
   box-shadow: var(--cs-shadow-sm);
 }
 .cs-appbar-inner {
-  max-width: 1100px; margin: 0 auto; padding: 14px 20px;
+  max-width: 100%; padding: 14px 20px;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .cs-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.01em; }
@@ -380,7 +381,7 @@ body.cs-shell {
 
 .cs-page {
   flex: 1; min-height: 0; overflow-y: auto;
-  max-width: 1100px; width: 100%; margin: 0 auto; padding: 20px 20px 48px;
+  max-width: 100%; width: 100%; margin: 0 auto; padding: 20px 20px 48px;
 }
 .cs-page-header { padding: 8px 2px 20px; }
 .cs-page-title { font-size: 28px; line-height: 1.25; margin: 0; font-weight: 700; }
@@ -474,10 +475,10 @@ body.cs-shell {
 /* ========== 5. Teacher classroom (classroom_TeacherView.html) ========== */
 .dashboard-wrapper {
   display: flex; height: 100vh; min-height: 0; overflow: hidden;
-  background: var(--cs-surface);
+  background: var(--cs-surface); width: 100%;
 }
 .sidebar {
-  width: 260px; flex-shrink: 0; overflow-y: auto;
+  width: 360px; flex-shrink: 0; overflow-y: auto;
   background: var(--cs-surface-card); padding: 20px;
   border-right: 1px solid var(--cs-border);
 }
@@ -529,10 +530,11 @@ body.cs-shell {
 
 .teacher-classroom-layout {
   flex: 1; min-height: 0; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 340px; grid-template-rows: 1fr;
+  display: grid; grid-template-columns: 1fr 360px; grid-template-rows: 1fr;
+  
   gap: 24px; align-items: stretch;
 }
-.teacher-classroom-left { min-width: 0; min-height: 0; overflow-y: auto; }
+.teacher-classroom-left { min-width: 0; min-height: 0; overflow-y: auto; width: 100%;}
 .teacher-classroom-right {
   border-left: 1px solid var(--cs-border); padding-left: 20px;
   display: flex; flex-direction: column; min-height: 0; overflow: hidden;
@@ -560,16 +562,25 @@ body.cs-shell {
   transition: transform var(--cs-transition), box-shadow var(--cs-transition);
 }
 .folder-card:hover { transform: translateY(-2px); box-shadow: var(--cs-shadow); }
-.folder-title { font-weight: 600; margin-bottom: 10px; display: block; color: var(--cs-text); }
-.folder-actions { display: flex; justify-content: space-between; gap: 6px; }
+.folder-title { font-weight: 600; margin-bottom: 10px; display: block; color: var(--cs-text);}
 .icon-btn {
+  display: inline-flex;            /* center contents */
+  align-items: center;
+  justify-content: space-between;
   padding: 6px 10px; border: none; border-radius: var(--cs-radius-sm);
   cursor: pointer; font-size: 14px; color: #fff; transition: all var(--cs-transition);
 }
+.folder-actions { display: flex; justify-content: space-evenly; gap: 8px; }
 .upload-btn.icon-btn { background: var(--cs-primary); }
 .view-btn { background: var(--cs-success); }
 .delete-btn { background: var(--cs-danger); }
 .icon-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+/* ensure icons are correctly sized */
+.icon-btn img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
 
 /* Teacher folder cards: match the student card vibe */
 .teacher-folder-card{
@@ -626,7 +637,7 @@ body.cs-shell {
 .announcement-board-whatsapp {
   display: flex; flex-direction: column; flex: 1; min-height: 0; padding: 16px;
 }
-.announcement-board-compose { display: flex; gap: 10px; margin-bottom: 12px; flex-shrink: 0; }
+.announcement-board-compose { display: flex; gap: 10px; margin-bottom: 12px; flex-shrink: 0; padding-right: 10px;}
 .announcement-board-compose .announcement-input {
   flex: 1; padding: 10px 14px; border-radius: var(--cs-radius-sm);
   border: 1px solid var(--cs-border); font-size: 14px;
@@ -710,7 +721,6 @@ body.classroom-page-body, body.classroom-folder-body {
 }
 .classroom-page .classroom-layout {
   flex: 1; min-height: 0; overflow: hidden;
-  display: grid; grid-template-columns: 1fr 340px; grid-template-rows: 1fr;
   gap: 24px; align-items: stretch;
 }
 .classroom-folder-page #folderMaterials {
