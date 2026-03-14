@@ -210,10 +210,23 @@ router.post('/:id/requests/:requestId/reject', requireAuth, requireRole('teacher
   return res.json({ ok: true });
 });
 
-// Teacher: list approved students in a classroom
-router.get('/:id/students', requireAuth, requireRole('teacher'), async (req, res) => {
+// List approved students in a classroom
+// - Teachers: list their classroom students
+// - Approved students: list classmates (no delete access)
+router.get('/:id/students', requireAuth, async (req, res) => {
   const classroomId = Number(req.params.id);
-  if (!(await ensureTeacherOwnsClassroom(req.user.id, classroomId))) return res.status(404).json({ error: 'Not found' });
+
+  if (req.user.role === 'teacher') {
+    if (!(await ensureTeacherOwnsClassroom(req.user.id, classroomId))) {
+      return res.status(404).json({ error: 'Not found' });
+    }
+  } else if (req.user.role === 'student') {
+    if (!(await ensureStudentApproved(req.user.id, classroomId))) {
+      return res.status(403).json({ error: 'Forbidden' });
+    }
+  } else {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
 
   const rows = await query(
     `SELECT m.student_id AS id,

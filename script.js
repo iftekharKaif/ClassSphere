@@ -659,6 +659,69 @@ const ClassSphereStudentClassroom = (() => {
     }
   }
 
+  function renderStudentsForStudent(students) {
+    const list = document.getElementById('teacherStudentsList');
+    const countEl = document.getElementById('teacherStudentsCount');
+    if (!list) return;
+    list.innerHTML = '';
+    if (countEl) countEl.textContent = `Joined: ${Array.isArray(students) ? students.length : 0}`;
+
+    if (!students || !students.length) {
+      const li = document.createElement('li');
+      li.style.color = '#6b7280';
+      li.style.fontSize = '14px';
+      li.textContent = 'No students joined yet.';
+      list.appendChild(li);
+      return;
+    }
+
+    const sorted = students.slice().sort((a, b) => {
+      const ra = String(a.roll_id != null ? a.roll_id : '');
+      const rb = String(b.roll_id != null ? b.roll_id : '');
+      const na = parseInt(ra, 10);
+      const nb = parseInt(rb, 10);
+      if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+      return ra.localeCompare(rb, undefined, { numeric: true });
+    });
+
+    sorted.forEach((s) => {
+      const li = document.createElement('li');
+      li.className = 'student-item';
+
+      const info = document.createElement('div');
+      info.className = 'student-info';
+      const rollLine = document.createElement('div');
+      rollLine.className = 'student-roll-line';
+      const rollBadge = document.createElement('span');
+      rollBadge.className = 'student-roll-badge';
+      rollBadge.textContent = s.roll_id != null && s.roll_id !== '' ? `Roll ${s.roll_id}` : '—';
+      rollLine.appendChild(rollBadge);
+      const nameLine = document.createElement('div');
+      nameLine.className = 'student-name-line';
+      nameLine.textContent = s.full_name || s.email || 'Student';
+
+      info.appendChild(rollLine);
+      info.appendChild(nameLine);
+      li.appendChild(info);
+      list.appendChild(li);
+    });
+  }
+
+  async function loadStudents(classId) {
+    try {
+      const res = await ClassSphereAuth.authFetch(`/api/classrooms/${encodeURIComponent(classId)}/students`);
+      if (res.status === 401) {
+        handleAuthError('student');
+        return;
+      }
+      const data = await res.json().catch(() => ({ students: [] }));
+      const items = Array.isArray(data.students) ? data.students : [];
+      renderStudentsForStudent(items);
+    } catch {
+      renderStudentsForStudent([]);
+    }
+  }
+
   async function loadClassroom(classId) {
     try {
       const res = await ClassSphereAuth.authFetch(`/api/classrooms/${encodeURIComponent(classId)}`);
@@ -715,6 +778,7 @@ const ClassSphereStudentClassroom = (() => {
       loadFoldersAndMaterials(classId),
       loadAnnouncements(classId),
       loadResults(classId),
+      loadStudents(classId),
     ]);
   }
 

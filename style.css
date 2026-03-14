@@ -113,6 +113,12 @@ body.landing-shell {
   display: flex;
   flex-direction: column;
   animation: floatIn 1s ease forwards;
+background: rgba(111, 111, 245, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(111, 111, 245, 0.54);
   transition: transform var(--cs-transition), box-shadow var(--cs-transition);
 }
 .landing-hero-card:hover {
@@ -178,7 +184,7 @@ body.landing-shell {
 
 /* ========== 2. Auth (login.html, register.html) ========== */
 body.auth-shell {
-  background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
   color: #e2e8f0; align-items: center;
 }
 .auth-layout {
@@ -187,7 +193,7 @@ body.auth-shell {
 }
 .auth-hero {
   border-radius: 20px;
-  background: linear-gradient(145deg, #4338ca, #0b72519a);
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
   padding: 28px 30px; box-shadow: var(--cs-shadow-lg);
   display: flex; align-items: center;
 }
@@ -229,7 +235,13 @@ p { font-size: 16px; color: var(--cs-text-muted); margin-bottom: 30px; }
   font-weight: 600; color: #fff; transition: transform var(--cs-transition), opacity var(--cs-transition), box-shadow var(--cs-transition);
 }
 .btn:hover { opacity: 0.92; transform: translateY(-2px); }
-.form-container { max-width: 400px; padding: 40px 30px; }
+.form-container { max-width: 400px; padding: 40px 30px; 
+background: rgba(111, 111, 245, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(111, 111, 245, 0.54);}
 
 form { display: flex; flex-direction: column; }
 label {text-align: left; margin: 12px 0 7px 0; font-weight: 500; color: #334155;}
@@ -715,6 +727,9 @@ body.classroom-page-body, body.classroom-folder-body {
   border-right: 1px solid var(--cs-border);
   border-radius: 30px;
   margin: 20px;
+}
+.student-sidebar-list{
+  list-style: none; display: flex; flex-direction: column; gap: 12px; 
 }
 .student-main-content {
   flex: 1; min-height: 0; overflow: hidden;
