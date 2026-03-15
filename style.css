@@ -113,6 +113,12 @@ body.landing-shell {
   display: flex;
   flex-direction: column;
   animation: floatIn 1s ease forwards;
+background: rgba(111, 111, 245, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(111, 111, 245, 0.54);
   transition: transform var(--cs-transition), box-shadow var(--cs-transition);
 }
 .landing-hero-card:hover {
@@ -178,7 +184,7 @@ body.landing-shell {
 
 /* ========== 2. Auth (login.html, register.html) ========== */
 body.auth-shell {
-  background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+  background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
   color: #e2e8f0; align-items: center;
 }
 .auth-layout {
@@ -187,7 +193,7 @@ body.auth-shell {
 }
 .auth-hero {
   border-radius: 20px;
-  background: linear-gradient(145deg, #4338ca, #0b72519a);
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
   padding: 28px 30px; box-shadow: var(--cs-shadow-lg);
   display: flex; align-items: center;
 }
@@ -217,7 +223,7 @@ body.auth-shell {
 
 /* ========== 3. Shared (container, buttons, forms, modal) ========== */
 .container {
-  background: var(--cs-surface-card); padding: 40px 60px; border-radius: var(--cs-radius);
+   padding: 40px 60px; border-radius: var(--cs-radius);
   box-shadow: var(--cs-shadow); text-align: center;
 }
 h1 { font-size: 32px; margin-bottom: 16px; color: var(--cs-text); }
@@ -229,7 +235,13 @@ p { font-size: 16px; color: var(--cs-text-muted); margin-bottom: 30px; }
   font-weight: 600; color: #fff; transition: transform var(--cs-transition), opacity var(--cs-transition), box-shadow var(--cs-transition);
 }
 .btn:hover { opacity: 0.92; transform: translateY(-2px); }
-.form-container { max-width: 400px; padding: 40px 30px; }
+.form-container { max-width: 400px; padding: 40px 30px; 
+background: rgba(111, 111, 245, 0.06);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(111, 111, 245, 0.54);}
 
 form { display: flex; flex-direction: column; }
 label {text-align: left; margin: 12px 0 7px 0; font-weight: 500; color: #334155;}
@@ -339,13 +351,18 @@ form a:hover { text-decoration: underline; }
 body.cs-shell {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   display: flex; flex-direction: column; height: 100vh; min-height: 0;
-  overflow: hidden; background: var(--cs-surface); color: var(--cs-text);
+  overflow: hidden; background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  color: var(--cs-text);
 }
 .cs-appbar {
   flex-shrink: 0; position: sticky; top: 0; z-index: 50;
   width: 100%;
-  background: var(--cs-surface-card); border-bottom: 1px solid var(--cs-border);
+  background-color: #DCD9D4;
+background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+  border-bottom: 1px solid var(--cs-border);
   box-shadow: var(--cs-shadow-sm);
+  border-radius: 20px;
 }
 .cs-appbar-inner {
   max-width: 100%; padding: 14px 20px;
@@ -473,14 +490,25 @@ body.cs-shell {
 }
 
 /* ========== 5. Teacher classroom (classroom_TeacherView.html) ========== */
+body[data-page="classroom-teacher"] .dashboard-wrapper {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
+}
+
 .dashboard-wrapper {
   display: flex; height: 100vh; min-height: 0; overflow: hidden;
-  background: var(--cs-surface); width: 100%;
+  background-color: #DCD9D4;
+ background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+ background-blend-mode: soft-light,screen;
+  width: 100%;
 }
 .sidebar {
   width: 360px; flex-shrink: 0; overflow-y: auto;
-  background: var(--cs-surface-card); padding: 20px;
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+   padding: 20px;
   border-right: 1px solid var(--cs-border);
+  border-radius: 30px;
+  margin: 20px;
 }
 .back-to-dashboard-btn {
   display: inline-block;
@@ -524,7 +552,7 @@ body.cs-shell {
 
 .main-content {
   flex: 1; min-height: 0; min-width: 0; overflow: hidden;
-  display: flex; flex-direction: column; padding: 28px 36px;
+  display: flex; flex-direction: column; padding: 28px 36px; padding-right: 20px;
 }
 .main-content h1 { font-size: 26px; margin-bottom: 18px; color: var(--cs-text); font-weight: 700; }
 
@@ -698,7 +726,7 @@ body.cs-shell {
 /* ========== 6. Student classroom & folder (classroom_StudentView, classroom_StudentFolderView) ========== */
 body.classroom-page-body, body.classroom-folder-body {
   overflow: hidden; height: 100vh; display: flex; flex-direction: column;
-  background: var(--cs-surface);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f1f5f9 100%);
 }
 .student-classroom-wrapper {
   display: flex; height: 100vh; min-height: 0; overflow: hidden;
@@ -707,6 +735,11 @@ body.classroom-page-body, body.classroom-folder-body {
   width: 220px; flex-shrink: 0;
   background: var(--cs-surface-card); padding: 20px;
   border-right: 1px solid var(--cs-border);
+  border-radius: 30px;
+  margin: 20px;
+}
+.student-sidebar-list{
+  list-style: none; display: flex; flex-direction: column; gap: 12px; 
 }
 .student-main-content {
   flex: 1; min-height: 0; overflow: hidden;
@@ -716,7 +749,7 @@ body.classroom-page-body, body.classroom-folder-body {
 .classroom-container.classroom-folder-page {
   flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden;
   width: 100%; max-width: none; margin: 0;
-  background: var(--cs-surface-card); padding: 28px 36px; border-radius: 0;
+  padding: 28px 36px; padding-right: 20px; border-radius: 0;
   box-shadow: none;
 }
 .classroom-page .classroom-layout {
@@ -869,3 +902,150 @@ body.classroom-page-body, body.classroom-folder-body {
 #addFolderBtn:hover { transform: scale(1.08); background: var(--cs-primary-hover); }
 .folder { background: #fff; padding: 15px; margin: 10px 0; border-radius: var(--cs-radius-sm); display: flex; justify-content: space-between; align-items: center; }
 .actions button { margin-left: 8px; cursor: pointer; }
+
+/* ========== User Profile Page ========== */
+.profile-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-card {
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+  border-radius: var(--cs-radius);
+  padding: 24px;
+  box-shadow: var(--cs-shadow);
+  border: 1px solid var(--cs-border);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--cs-border);
+}
+
+.profile-avatar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--cs-primary);
+  box-shadow: var(--cs-shadow);
+}
+
+.change-avatar-btn {
+  background: var(--cs-primary);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--cs-radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--cs-transition);
+}
+
+.change-avatar-btn:hover {
+  background: var(--cs-primary-hover);
+  transform: translateY(-1px);
+}
+
+.profile-info h2 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+  color: var(--cs-text);
+}
+
+.profile-info p {
+  margin: 0;
+  color: var(--cs-text-muted);
+  font-size: 14px;
+}
+
+.profile-form {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--cs-border);
+}
+
+.profile-form h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--cs-text);
+  font-weight: 600;
+}
+
+.profile-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--cs-text);
+}
+
+.profile-form input {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.update-btn {
+  background: var(--cs-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--cs-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cs-transition);
+}
+
+.update-btn:hover {
+  background: var(--cs-primary-hover);
+  transform: translateY(-1px);
+}
+
+.change-password-btn {
+  background: var(--cs-accent);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--cs-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cs-transition);
+}
+
+.change-password-btn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+.profile-actions {
+  text-align: center;
+}
+
+.logout-btn {
+  background: var(--cs-danger);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: var(--cs-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--cs-transition);
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}

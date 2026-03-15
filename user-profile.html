@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - ClassSphere</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="user-profile">
+  <div class="dashboard-wrapper">
+    <aside class="sidebar">
+      <a href="#" id="backToDashboard" class="btn back-to-dashboard-btn">← Back to dashboard</a>
+    </aside>
+
+    <main class="main-content">
+      <div class="container profile-container">
+        <h1>User Profile</h1>
+
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <img id="profileImage" src="assets/default-avatar.png" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+              <h2 id="profileName">Loading...</h2>
+              <p id="profileEmail">Loading...</p>
+              <p id="profileRole">Loading...</p>
+            </div>
+          </div>
+
+
+          <form id="changePasswordForm" class="profile-form">
+            <h3>Change Password</h3>
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" required>
+
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" required>
+
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" required>
+
+            <button type="submit" class="btn change-password-btn">Change Password</button>
+            <p id="passwordError" class="form-error"></p>
+          </form>
+
+          <div class="profile-actions">
+            <button type="button" class="btn logout-btn" id="logoutBtn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

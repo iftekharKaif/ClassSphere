@@ -93,5 +93,26 @@ router.get('/me', requireAuth, async (req, res) => {
   });
 });
 
+// Change password
+router.post('/change-password', requireAuth, async (req, res) => {
+  const { currentPassword, newPassword } = req.body || {};
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ error: 'Current and new password are required' });
+  }
+
+  // Get current user
+  const users = await query('SELECT password_hash FROM users WHERE id = ? LIMIT 1', [req.user.id]);
+  if (!users.length) return res.status(404).json({ error: 'User not found' });
+
+  const user = users[0];
+  const ok = await bcrypt.compare(String(currentPassword), String(user.password_hash));
+  if (!ok) return res.status(401).json({ error: 'Current password is incorrect' });
+
+  const newHash = await bcrypt.hash(String(newPassword), 12);
+  await query('UPDATE users SET password_hash = ? WHERE id = ?', [newHash, req.user.id]);
+
+  return res.json({ ok: true });
+});
+
 module.exports = router;
 
