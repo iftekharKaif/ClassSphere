@@ -351,13 +351,18 @@ form a:hover { text-decoration: underline; }
 body.cs-shell {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   display: flex; flex-direction: column; height: 100vh; min-height: 0;
-  overflow: hidden; background: var(--cs-surface); color: var(--cs-text);
+  overflow: hidden; background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  color: var(--cs-text);
 }
 .cs-appbar {
   flex-shrink: 0; position: sticky; top: 0; z-index: 50;
   width: 100%;
-  background: var(--cs-surface-card); border-bottom: 1px solid var(--cs-border);
+  background-color: #DCD9D4;
+background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+  border-bottom: 1px solid var(--cs-border);
   box-shadow: var(--cs-shadow-sm);
+  border-radius: 20px;
 }
 .cs-appbar-inner {
   max-width: 100%; padding: 14px 20px;
@@ -491,11 +496,16 @@ body[data-page="classroom-teacher"] .dashboard-wrapper {
 
 .dashboard-wrapper {
   display: flex; height: 100vh; min-height: 0; overflow: hidden;
-  background: var(--cs-surface); width: 100%;
+  background-color: #DCD9D4;
+ background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+ background-blend-mode: soft-light,screen;
+  width: 100%;
 }
 .sidebar {
   width: 360px; flex-shrink: 0; overflow-y: auto;
-  background: var(--cs-surface-card); padding: 20px;
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
+   padding: 20px;
   border-right: 1px solid var(--cs-border);
   border-radius: 30px;
   margin: 20px;
@@ -901,7 +911,8 @@ body.classroom-page-body, body.classroom-folder-body {
 }
 
 .profile-card {
-  background: var(--cs-surface-card);
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+ background-blend-mode: screen;
   border-radius: var(--cs-radius);
   padding: 24px;
   box-shadow: var(--cs-shadow);
