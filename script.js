@@ -2390,6 +2390,9 @@ const ClassSphereUserProfile = (() => {
 
   // ----------------- Init -----------------
   function init() {
+    const page = document.body && document.body.getAttribute('data-page');
+    if (page === 'login' || page === 'register') return;
+
     const user = ClassSphereAuth.getUser();
     if (!user) {
       window.location.href = 'login.html';
@@ -2424,7 +2427,7 @@ const ClassSphereUserProfile = (() => {
     }
 
     // Logout button
-    const logoutBtn = sidebar.querySelector('.logout-btn');
+    const logoutBtn = sidebar ? sidebar.querySelector('.logout-btn') : null;
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
         const ok = confirm('Are you sure you want to logout?');
